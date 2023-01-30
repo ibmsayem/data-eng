@@ -1,0 +1,41 @@
+
+export CLOUDSDK_PYTHON=~/C:/Users/ibmcs/anaconda3
+
+gcloud auth application-default inlaid-computer-375102
+
+gcloud auth application-default dtc-de
+
+
+
+unset GOOGLE_APPLICATION_CREDENTIALS
+
+export GOOGLE_APPLICATION_CREDENTIALS=C:/Users/ibmcs/AppData/Roaming/gcloud/inlaid-computer-375102-b1039a7852c4.json
+
+
+
+
+gcloud auth application-default set-quota-project
+
+
+
+Step by step GCP platform connect with Terraform:
+1. unset GOOGLE_APPLICATION_CREDENTIALS # if you have previously one defined and dont wants to overlap with this
+2. Then give the following command:
+	 gcloud auth application-default login
+If it shows this warning: "Cannot find a quota project to add to ADC. You might receive a "quota exceeded" or "API not enabled" error. Run $ gcloud auth application-default set-quota-project to add a quota project.
+"
+Add a quota project by using the following command:
+
+PROJECT_NAME="winter-cargo-376215"
+gcloud auth application-default set-quota-project ${PROJECT_NAME}
+
+3. Then you can export the credentials where you kept your json file of credentials:
+ 
+export GOOGLE_APPLICATION_CREDENTIALS=C:/Users/ibmcs/OneDrive/Desktop/data_eng/week1/2_docker_sql/winter-cargo-376215-3992cf0df55f.json
+
+4. Then apply the terraform command to run the project
+
+
+export GOOGLE_APPLICATION_CREDENTIALS=C:/Users/ibmcs/AppData/Roaming/gcloud/application_default_credentials.json
+
+gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
