@@ -1,0 +1,23 @@
+services:
+  pgdatabase:
+    image: 'postgres:latest'
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_USER: ibrahim
+      POSTGRES_PASSWORD: sayem
+      POSTGRES_DB: ny_taxi
+    volumes:
+      - ./ny_taxi_postgres_data:/var/lib/postgresql/data:rw
+  pgadmin:
+    image: 'dpage/pgadmin4:latest'
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: abc@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: sayem
+    volumes:
+      - pgadmin-data:/var/lib/pgadmindata
+volumes:
+  ny_taxi_postgres_data:
+  pgadmin-data:
